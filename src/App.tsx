@@ -1,6 +1,5 @@
-import {parse, format, isAfter, addHours, isBefore} from 'date-fns'
+import { parse, format, isAfter, addHours, isBefore } from 'date-fns'
 import { reversalRequestsJSON } from './reversalRequests';
-
 import {
   Table,
   Header,
@@ -10,9 +9,12 @@ import {
   HeaderCell,
   Cell,
 } from "@table-library/react-table-library/table";
-
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
+
+const US_DATE_FORMAT = 'M/d/yyyy'; 
+const EUROPE_DATE_FORMAT = 'd/M/yyyy';
+const NEW_TOC_CUT_OFF_DATE_EU = '2/1/2020';
 
 type CustomerLocation = 'US' | 'Europe';
 type RequestSource = 'web app' | 'phone';
@@ -38,10 +40,6 @@ interface ReversalRequest  {
   isSubjectToNewTos: boolean;
   isReversalRequestApproved: boolean;
 }
-
-const US_DATE_FORMAT = 'M/d/yyyy'; 
-const EUROPE_DATE_FORMAT = 'd/M/yyyy';
-const NEW_TOC_CUT_OFF_DATE_EU = '2/1/2020';
 
 function App() {
 
